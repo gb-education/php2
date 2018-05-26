@@ -90,20 +90,6 @@ function show_img($id,$dbh) {
 }
 
 
-// показываем и плюсуем счетчик просмотров
-function view_count ($fname,$connect_db) {
-	//echo $fname;
-	mysqli_query($connect_db,"UPDATE images SET view_count = view_count + 1  WHERE url_img = '".$fname."';");
-
-	//$sql = "SELECT view_count FROM images WHERE name IN ('".$fname."')"; //SELECT нужное поле FROM table WHERE field2=...
-	$sql = "SELECT * FROM `images` WHERE `url_img` = '".$fname."';";
-	$res = mysqli_query($connect_db,$sql);
-	while($data_img = mysqli_fetch_assoc($res)) {
-		echo "Просмотров: ".$data_img['view_count'];
-	}
-}
-
-
 // функция проверки существования папки и ее создания
 function chkdir($folder) {
 	if (!file_exists($folder)) {
